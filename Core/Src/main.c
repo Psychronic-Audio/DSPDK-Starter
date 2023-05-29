@@ -164,8 +164,6 @@ int main(void)
   MX_UART8_Init();
   /* USER CODE BEGIN 2 */
 
-  initialize_filters();
-
   if( SETUP_TLV320(&hi2c1) != 0){
 	  return 1;
   }
