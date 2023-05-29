@@ -2,7 +2,7 @@
  * tlv320.h
  *
  *  Created on: May 6, 2023
- *      Author: mbeck
+ *      Author: Psychronic Audio
  */
 
 #ifndef INC_TLV320_H_
