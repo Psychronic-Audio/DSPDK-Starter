@@ -8,7 +8,7 @@
 #ifndef INC_TLV320_H_
 #define INC_TLV320_H_
 #include "stm32h7xx_hal.h"
-#define TLV320_ADDR (((uint8_t) 0x18) << 1) /*TLV320DAC32IRHBR I2C Address*/
+#define TLV320_ADDR (((uint8_t) 0b00011000) << 1) /*TLV320DAC32IRHBR I2C Address*/
 
 //Page 0
 #define DAC_PAGE_SEL_REG ((uint8_t) 0x00) /*Page Select Register*/
