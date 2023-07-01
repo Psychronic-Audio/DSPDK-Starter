@@ -111,7 +111,7 @@ int SETUP_TLV320(I2C_HandleTypeDef *i2c_handle){
 
 	//Route DAC_L to HPLOUT
 	reg_addr = DAC_L_HPLOUT_VOL_CTRL_REG;
-	data = (uint8_t)0b10000000;
+	data = (uint8_t)0b00000000;
 	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, reg_addr, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
 	if(ret != HAL_OK){
 		return 1;
