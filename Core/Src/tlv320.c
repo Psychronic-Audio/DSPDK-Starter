@@ -134,9 +134,9 @@ int SETUP_TLV320(I2C_HandleTypeDef *i2c_handle){
 	}
 
 	//Unmute Left DAC, no attenuation
-	data[0] = LDAC_DVOL_CTRL_REG;
-	data[1] = (uint8_t)0b00000000;
-	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, data[0], 1, &data[1], 1, HAL_MAX_DELAY);
+	reg_addr = LDAC_DVOL_CTRL_REG;
+	data = (uint8_t)0b00000000;
+	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, reg_addr, 1, &data, 1, HAL_MAX_DELAY);
 	if(ret != HAL_OK){
 		return 1;
 	}
