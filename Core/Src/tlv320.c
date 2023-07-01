@@ -25,18 +25,6 @@ int SETUP_TLV320(I2C_HandleTypeDef *i2c_handle){
 	uint8_t reg_addr;
 	uint8_t data;
 
-	/*
-	PLL SETUP
-	STM32 MCLK OUT = 47.743kHz * 256 = 12.222208MHz
-	NDAC Defaults to 1
-	DAC Sample Rate = 1 * Fs_ref/NDAC (DUAL RATE MODE DISABLED) = 47.743kHz
-	Fs_ref = (MCLK_IN * K * R)/(2048 * P) = 5697.875Hz * (K * R / P) = 47.743kHz
-	(K*R/P) = 47743/5697.875 = 8
-	K=J.D = 8.0000
-	R = 1
-	P = 1
-	*/
-
 	//Enable PLL, set P to 1
 	reg_addr = PLL_PGRM_REG_A;
 	data = (uint8_t)0b10010001;
