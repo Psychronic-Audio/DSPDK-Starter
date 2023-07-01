@@ -45,9 +45,9 @@ int SETUP_TLV320(I2C_HandleTypeDef *i2c_handle){
 		return 2;
 	}
 
-	//Set PLL J to 8
+	//Set PLL J to 2
 	reg_addr = PLL_PGRM_REG_B;
-	data = (uint8_t)0b00100000;
+	data = (uint8_t)0b00001000;
 	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, reg_addr, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
 	if(ret != HAL_OK){
 		return 3;
@@ -61,15 +61,15 @@ int SETUP_TLV320(I2C_HandleTypeDef *i2c_handle){
 		return 4;
 	}
 
-	//Set PLL Clock Div (N) to 8
+	//Set PLL Clock Div (N) to 2
 	reg_addr = CLK_GEN_CTRL_REG;
-	data = (uint8_t)0b00001000;
+	data = (uint8_t)0b00000010;
 	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, reg_addr, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
 	if(ret != HAL_OK){
 		return 1;
 	}
 
-	//Enable Dual Rate Mode, Setup Left DAC Datapath
+	//Setup Left DAC Datapath
 	reg_addr = DAC_DATAPATH_REG;
 	data = (uint8_t)0b00001000;
 	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, reg_addr, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
@@ -79,7 +79,7 @@ int SETUP_TLV320(I2C_HandleTypeDef *i2c_handle){
 
 	//Choose Left-Justified I2S mode, with 32-bit word length
 	reg_addr = ASDI_CTRL_REG_B;
-	data = (uint8_t)0b11110000;
+	data = (uint8_t)0b11110100;
 	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, reg_addr, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
 	if(ret != HAL_OK){
 		return 1;
