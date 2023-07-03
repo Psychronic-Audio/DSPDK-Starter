@@ -12,7 +12,7 @@ void process_audio(volatile int32_t *inputSamples, volatile int32_t *outputSampl
 
 	//The data collected from the ADC and DAC are still stereo. We need to separate the left channel out of the mix
 	for(int i = 0; i < BUFFER_SIZE*2; i += 2){
-		outputSamples[i] = inputSamples[i] << 8;
+		outputSamples[i] = inputSamples[i];
 		outputSamples[i+1] = 0;
 	}
 

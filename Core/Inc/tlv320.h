@@ -21,6 +21,7 @@
 #define DAC_DATAPATH_REG ((uint8_t) 0x07) /*DAC Datapath Setup Register*/
 #define ASDI_CTRL_REG_A ((uint8_t) 0x08) /*Audio Serial Data Interface Control Register A*/
 #define ASDI_CTRL_REG_B ((uint8_t) 0x09) /*Audio Serial Data Interface Control Register B*/
+#define ASDI_CTRL_REG_C ((uint8_t) 0x0A) /*Audio Serial Data Interface Control Register B*/
 #define DAC_OF_FLAG_REG ((uint8_t) 0x0B) /* Audio DAC Overflow Flag Register*/
 #define HSET_BTTN_PRESS_DET_REG_B ((uint8_t) 0x0E) /* Headset / Button Press Detection Register B */
 #define DAC_PWR_CTRL_REG ((uint8_t) 0x25) /*DAC Power and Output Driver Control Register*/
@@ -30,6 +31,7 @@
 #define LDAC_DVOL_CTRL_REG ((uint8_t) 0x2B) /*Left DAC Digital Volume Control Register*/
 #define RDAC_DVOL_CTRL_REG ((uint8_t) 0x2C) /*Right DAC Digital Volume Control Register*/
 #define DAC_L_HPLOUT_VOL_CTRL_REG ((uint8_t) 0x2F) /*DAC_L to HPLOUT Volume Control Register*/
+#define DAC_L_HPLCOM_VOL_CTRL_REG ((uint8_t) 0x36) /*DAC_L to HPLOUT Volume Control Register*/
 #define HPLOUT_OUTPUT_LVL_CTRL_REG ((uint8_t) 0x33) /*HPLOUT Output Level Control Register*/
 #define HPLCOM_OUTPUT_LVL_CTRL_REG ((uint8_t) 0x3A) /*HPLCOM Output Level Control Register*/
 #define MDL_PWR_STATUS_REG ((uint8_t) 0x5E) /*Module Power Status Register*/
