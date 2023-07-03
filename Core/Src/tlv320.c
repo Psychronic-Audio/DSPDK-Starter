@@ -57,6 +57,14 @@ int SETUP_TLV320(I2C_HandleTypeDef *i2c_handle){
 		return 1;
 	}
 
+	//Choose PLLDIV_OUT Clock for DAC_CLKIN
+	reg_addr = ADDL_CTRL_REG_B;
+	data = (uint8_t)0b00000000;
+	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, reg_addr, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
+	if(ret != HAL_OK){
+		return 1;
+	}
+
 	//Setup Left DAC Datapath
 	reg_addr = DAC_DATAPATH_REG;
 	data = (uint8_t)0b00001000;
@@ -73,9 +81,9 @@ int SETUP_TLV320(I2C_HandleTypeDef *i2c_handle){
 		return 1;
 	}
 
-	//Choose AC-Coupled Driver Config, and Fully-differential Config
+	//Choose Capless Driver Config, and Fully-differential Config
 	reg_addr = HSET_BTTN_PRESS_DET_REG_B;
-	data = (uint8_t)0b11000000;
+	data = (uint8_t)0b01000000;
 	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, reg_addr, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
 	if(ret != HAL_OK){
 		return 1;
@@ -99,15 +107,15 @@ int SETUP_TLV320(I2C_HandleTypeDef *i2c_handle){
 
 	//Route DAC_L to HPLOUT
 	reg_addr = DAC_L_HPLOUT_VOL_CTRL_REG;
-	data = (uint8_t)0b00000000;
+	data = (uint8_t)0b10000000;
 	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, reg_addr, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
 	if(ret != HAL_OK){
 		return 1;
 	}
 
-	//Choose PLLDIV_OUT Clock for DAC_CLKIN
-	reg_addr = ADDL_CTRL_REG_B;
-	data = (uint8_t)0b00000000;
+	//Route DAC_L to HPLCOM
+	reg_addr = DAC_L_HPLCOM_VOL_CTRL_REG;
+	data = (uint8_t)0b10000000;
 	ret = HAL_I2C_Mem_Write(i2c_handle, TLV320_ADDR, reg_addr, I2C_MEMADD_SIZE_8BIT, &data, 1, HAL_MAX_DELAY);
 	if(ret != HAL_OK){
 		return 1;
